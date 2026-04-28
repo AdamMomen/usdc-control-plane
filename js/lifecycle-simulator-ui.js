@@ -160,6 +160,12 @@ export function mountLifecycleSimulator(container) {
     const phases = getPhasesForMode(mode);
     log.replaceChildren();
     setRunning(true);
+    window.dispatchEvent(
+      new CustomEvent("lifecycle-sim-begin", {
+        bubbles: true,
+        detail: { mode },
+      }),
+    );
     appendLogLine(`mode=${mode} batch=sim_${Math.random().toString(36).slice(2, 9)}`, "lifecycle-log-line--meta");
 
     for (let i = 0; i < phases.length; i++) {
@@ -188,6 +194,7 @@ export function mountLifecycleSimulator(container) {
   }
 
   function resetView() {
+    window.dispatchEvent(new CustomEvent("lifecycle-sim-reset", { bubbles: true }));
     renderSteps();
   }
 

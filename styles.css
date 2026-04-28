@@ -153,9 +153,81 @@ body {
   left: auto;
   right: clamp(12px, 2.5vw, 28px);
   top: clamp(52px, 8vh, 96px);
-  width: clamp(260px, 44vw, 560px);
-  height: clamp(168px, 30vh, 320px);
+  width: clamp(260px, 46vw, 580px);
+  min-height: clamp(300px, 44vh, 480px);
+  max-height: min(560px, 88vh);
   z-index: 10;
+}
+
+/* ---- Phase 5 — trust invariant hero ---- */
+
+.invariant-monitor-host {
+  overflow: auto;
+}
+
+.invariant-monitor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 0;
+}
+
+.invariant-monitor-hero {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #79c0ff;
+}
+
+.invariant-monitor-sub {
+  margin: 0;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  color: #6e7681;
+}
+
+.invariant-rows {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.35rem 0.85rem;
+  align-items: baseline;
+  margin: 0;
+  padding: 0.5rem 0 0;
+  border-top: 1px solid #21262d;
+}
+
+.invariant-row-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #e6edf3;
+}
+
+.invariant-rows dt {
+  grid-column: 1;
+}
+
+.invariant-rows dd {
+  margin: 0;
+  grid-column: 2;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.invariant-row-value--standby {
+  color: #6e7681;
+}
+
+.invariant-row-value--pass {
+  color: #3fb950;
+  text-shadow: 0 0 12px rgba(63, 185, 80, 0.25);
+}
+
+.invariant-row-value--valid {
+  color: #58a6ff;
+  text-shadow: 0 0 14px rgba(88, 166, 255, 0.2);
 }
 
 .win-explorer {

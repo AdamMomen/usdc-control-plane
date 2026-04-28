@@ -2,6 +2,7 @@
 
 import { attachCommandPalette } from "./command-palette.js";
 import { mountLifecycleSimulator } from "./lifecycle-simulator-ui.js";
+import { mountInvariantMonitor } from "./invariant-monitor-ui.js";
 
 const BOOT_LINES = [
   "Loading USDC Control Plane...",
@@ -21,7 +22,7 @@ const WINDOWS = [
   {
     id: "invariant",
     title: "Invariant Monitor",
-    body: "Supply integrity, replay safety, finality — status grid next.",
+    body: "",
     className: "win-invariant",
   },
   {
@@ -181,6 +182,8 @@ function createWindow(def) {
 
   if (def.id === "lifecycle") {
     mountLifecycleSimulator(body);
+  } else if (def.id === "invariant") {
+    mountInvariantMonitor(body);
   } else {
     const p = document.createElement("p");
     p.className = "desktop-window__placeholder";

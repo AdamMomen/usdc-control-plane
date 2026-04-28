@@ -405,19 +405,19 @@ Commit / push.
 
 Build:
 
-- [ ] Supply Integrity
-- [ ] State Transition Valid
-- [ ] Replay Safety
-- [ ] Settlement Finality
-- [ ] Ledger Consistency
+- [x] Supply Integrity
+- [x] State Transition Valid
+- [x] Replay Safety
+- [x] Settlement Finality (**VALID** at depth)
+- [x] Ledger Consistency
 
 Tasks:
-- [ ] indicators render
-- [ ] status updates
-- [ ] hook to simulator
+- [x] indicators render
+- [x] status updates (`lifecycle-sim-begin` · `lifecycle-sim-step` · `lifecycle-sim-reset`)
+- [x] hook to simulator
 
-Verify:
-- [ ] indicators update
+Verify (**please confirm**):
+- [ ] indicators update while **Run simulation** advances
 - [ ] feels like hero feature
 
 Verification gates pass.
