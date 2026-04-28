@@ -3,7 +3,7 @@
 # USDC Control Plane  
 **Trust Invariants for Programmable Assets**
 
-Static single-page application deployed via Docker + Nginx on :contentReference[oaicite:0]{index=0}.
+Static single-page application: built assets served as files (e.g. Coolify static hosting).
 
 No backend.  
 No database.  
@@ -64,11 +64,9 @@ B --> C[GitHub Repository]
 
 C --> D[Coolify]
 
-D --> E[Docker Build]
+D --> E[Static site publish]
 
-E --> F[Nginx Container]
-
-F --> G[HTTPS Domain]
+E --> G[HTTPS Domain]
 
 G --> H[Circle Reviewer]
 ```
@@ -81,9 +79,8 @@ G --> H[Circle Reviewer]
 flowchart LR
 
 GitHub --> Coolify
-Coolify --> DockerImage
-DockerImage --> Nginx
-Nginx --> PublicURL
+Coolify --> StaticFiles
+StaticFiles --> PublicURL
 ```
 
 ---
@@ -98,9 +95,6 @@ A[Repository]
 A --> B[index.html]
 A --> C[styles.css]
 A --> D[app.js]
-
-A --> E[Dockerfile]
-A --> F[nginx.conf]
 
 A --> G[PRD.md]
 A --> H[checklist.md]
@@ -559,15 +553,9 @@ PushToGitHub
 --> CoolifyWebhook
 
 CoolifyWebhook
---> DockerBuild
+--> StaticPublish
 
-DockerBuild
---> ContainerDeploy
-
-ContainerDeploy
---> HealthCheck
-
-HealthCheck
+StaticPublish
 --> LiveProductionURL
 ```
 

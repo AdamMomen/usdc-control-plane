@@ -43,17 +43,15 @@ Pass criteria:
 
 ---
 
-## Docker Build Check
+## Static site sanity (optional)
 
-```bash
-docker build -t usdc-control-plane .
-```
+Production is **static files** only (Coolify or any static host).
 
 Pass criteria:
-- build succeeds
-- no missing files
+- `pnpm run check` passes (same as automated check above)
+- `pnpm run dev` or a one-line static server serves the root and `index.html` loads
 
-**(you)** Docker may not run in CI or every environment — run locally when Docker is available, then confirm the image serves the SPA.
+**(you)** No container build — confirm the deployed site matches what you get from a local static preview.
 
 ---
 
@@ -226,8 +224,6 @@ Create:
 index.html
 styles.css
 app.js
-Dockerfile
-nginx.conf
 ```
 
 Tasks:
@@ -255,38 +251,12 @@ Commit / push.
 
 # Phase 1.5 — First Coolify Deployment
 
-In Coolify:
+In Coolify (or equivalent):
 
 - [ ] Connect GitHub repo
-- [ ] Dockerfile deployment
-- [ ] Expose port 80
+- [ ] Deploy as **static site** (publish repo root — `index.html` at `/`)
 
----
-
-## Dockerfile
-
-```dockerfile
-FROM nginx:alpine
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY . /usr/share/nginx/html
-EXPOSE 80
-```
-
----
-
-## nginx.conf
-
-```nginx
-server {
- listen 80;
- root /usr/share/nginx/html;
- index index.html;
-
- location / {
-   try_files $uri $uri/ /index.html;
- }
-}
-```
+Coolify publishes the SPA as uploaded/copied assets; no Dockerfile or separate app server required.
 
 Verify:
 - [x] first deploy succeeds
@@ -341,6 +311,45 @@ Verify (**please confirm**):
 - [ ] Local verification
 - [ ] Live verification
 - [ ] User approval
+
+STOP. Wait for approval.
+
+Commit / push.
+
+---
+
+# Phase 2.5 — BackOS Desktop Metaphor (transition)
+
+Evolve the Phase 2 shell forward: same window manager and apps—clearer **desktop OS** metaphor and spatial onboarding. **Transition/incremental**, not a rollback or parallel redesign.
+
+## Desktop chrome
+
+Build:
+
+- [ ] **BackOS** identity (name + visuals consistent with existing boot/desktop styling)
+- [ ] **Icons-first desktop**: apps appear as icons; **opening a window is explicit** (click/double-click)—initial desktop is calm, not a pile of open windows
+- [ ] Trash on the desktop (affordance + behavior—empty vs items, optional restore)
+
+## Files / previews / Easter eggs
+
+Build:
+
+- [ ] **Files** area (folder or desktop pile) with enough entries to feel like a real filesystem
+- [ ] **Preview** for at least one substantive file (e.g. resume/CV viewer—fits the portfolio narrative)
+- [ ] At least one **hidden or non-obvious** asset path (Easter egg—extra file, dotfile joke, or “empty” folder that isn’t)
+
+## Stay aligned with the roadmap
+
+Non-goals:
+
+- Throwing away draggable windows, palette commands, or app content—this phase **re-skins and re-enters** through the desktop.
+
+Verify (**please confirm**):
+
+- [ ] Feels like one OS, not two products stitched together
+- [ ] Phase 3 command palette still launches the same windows/actions after changes to entry UX
+
+Verification gates pass.
 
 STOP. Wait for approval.
 
@@ -513,11 +522,11 @@ Commit / push.
 # Phase 8.5 — Copy Review Gate
 
 Check:
-- [ ] no blockchain clichés
-- [ ] no exaggerated claims
-- [ ] Circle relevance explicit
-- [ ] Simulation Mode disclaimer visible
-- [ ] CTA copy clear
+- [x] no blockchain clichés
+- [x] no exaggerated claims
+- [x] Circle relevance explicit
+- [x] Simulation Mode disclaimer visible
+- [x] CTA copy clear
 
 Must pass.
 
@@ -526,7 +535,7 @@ Must pass.
 # Phase 9 — Coolify Production Hardening
 
 ## Domain
-- [ ] attach custom domain
+- [x] attach custom domain
 
 Suggested:
 
@@ -534,27 +543,29 @@ Suggested:
 controlplane.adammomen.com
 ```
 
-- [ ] enable TLS
+- [x] enable TLS
 
 Verify:
-- [ ] domain resolves
-- [ ] HTTPS valid
+- [x] domain resolves
+- [x] HTTPS valid
 
 ---
 
-## Container Health
-- [ ] logs clean
-- [ ] healthy container
-- [ ] restart succeeds
+## Deploy health (static site)
+
+No container — verify the hosted site and Coolify project behave:
+
+- [x] live URL returns the app (no unexpected 5xx)
+- [x] redeploy / restart path works in Coolify when needed
 
 ---
 
 ## Rollback Test
-- [ ] intentionally break small thing
-- [ ] deploy
-- [ ] rollback previous release
+- [x] intentionally break small thing
+- [x] deploy
+- [x] rollback previous release
 
-Verify rollback works.
+Verify rollback works: **passed**
 
 ---
 

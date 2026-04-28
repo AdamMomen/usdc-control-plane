@@ -287,9 +287,7 @@ V1 stack:
 HTML
 CSS
 Vanilla JavaScript
-Docker
-Nginx
-Coolify
+Coolify (static hosting)
 ```
 
 No framework required.
@@ -303,11 +301,10 @@ No database.
 # 12. Deployment
 
 GitHub repository
-→ Docker build
-→ Coolify deploy
+→ Coolify static deploy
 → Public HTTPS URL
 
-Static site only.
+Static site only (no Docker / no app container).
 
 ---
 
