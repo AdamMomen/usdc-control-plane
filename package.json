@@ -1,0 +1,11 @@
+{
+  "name": "usdc-control-plane",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Simulated internal control plane — trust invariants for programmable assets (Circle-facing artifact)",
+  "scripts": {
+    "check": "node --check app.js && node --test",
+    "test": "node --test"
+  }
+}

@@ -1,0 +1,1 @@
+Replace this file with your public resume as resume.pdf (or update links in the shell when the top bar ships in later phases).
