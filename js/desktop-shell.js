@@ -5,6 +5,7 @@ import { mountLifecycleSimulator } from "./lifecycle-simulator-ui.js";
 import { mountInvariantMonitor } from "./invariant-monitor-ui.js";
 import { mountChainExplorer } from "./chain-explorer-ui.js";
 import { mountFailureModes } from "./failure-modes-ui.js";
+import { attachDesktopChrome } from "./desktop-chrome.js";
 
 const BOOT_LINES = [
   "Loading USDC Control Plane...",
@@ -64,6 +65,7 @@ export function mount(rootSelector) {
     root.replaceChildren();
     const { shell, byId } = buildDesktop();
     root.appendChild(shell);
+    attachDesktopChrome(root);
     attachCommandPalette(root, {
       focusWindow(id) {
         const el = byId.get(id);

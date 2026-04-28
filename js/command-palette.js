@@ -1,5 +1,7 @@
 /** Phase 3 — command palette (⌘/Ctrl-K). */
 
+import { populateHiddenMemo } from "./memo-content.js";
+
 /**
  * @typedef {{ id: string; label: string; hint?: string; windowId?: string; openMemo?: boolean }} PaletteEntry
  */
@@ -39,7 +41,7 @@ export const PALETTE_ENTRIES = [
   {
     id: "open-memo",
     label: "Open hidden memo",
-    hint: "Circle context — full copy in Phase 8",
+    hint: "Circle intent + links",
     openMemo: true,
   },
 ];
@@ -112,22 +114,24 @@ export function attachCommandPalette(root, { focusWindow }) {
   memoOverlay.setAttribute("role", "dialog");
   memoOverlay.setAttribute("aria-modal", "true");
   memoOverlay.setAttribute("aria-label", "Hidden memo");
-  memoOverlay.innerHTML = `
-    <div class="memo-backdrop"></div>
-    <div class="memo-panel">
-      <h2 class="memo-title">Hidden memo</h2>
-      <p class="memo-body">Full narrative (Circle fit, OCP nod, links) lands in Phase 8. This panel confirms the palette can reach it.</p>
-      <button type="button" class="memo-close">Close</button>
-    </div>
-  `;
+  memoOverlay.innerHTML =
+    `<div class="memo-backdrop"></div>` +
+    `<div class="memo-panel"></div>`;
   root.appendChild(memoOverlay);
   memoOverlay.setAttribute("aria-hidden", "true");
 
+  function closeMemo() {
+    if (!memoOpen) {
+      return;
+    }
+    memoOpen = false;
+    memoOverlay.hidden = true;
+    memoOverlay.setAttribute("aria-hidden", "true");
+  }
+
+  populateHiddenMemo(memoOverlay, closeMemo);
+
   memoOverlay.querySelector(".memo-backdrop")?.addEventListener("click", (e) => {
-    e.preventDefault();
-    closeMemo();
-  });
-  memoOverlay.querySelector(".memo-close")?.addEventListener("click", (e) => {
     e.preventDefault();
     closeMemo();
   });
@@ -200,15 +204,6 @@ export function attachCommandPalette(root, { focusWindow }) {
     window.requestAnimationFrame(() => {
       memoOverlay.querySelector(".memo-close")?.focus();
     });
-  }
-
-  function closeMemo() {
-    if (!memoOpen) {
-      return;
-    }
-    memoOpen = false;
-    memoOverlay.hidden = true;
-    memoOverlay.setAttribute("aria-hidden", "true");
   }
 
   function togglePalette() {

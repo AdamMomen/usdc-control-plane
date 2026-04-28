@@ -289,14 +289,14 @@ server {
 ```
 
 Verify:
-- [ ] first deploy succeeds
-- [ ] live URL works
-- [ ] auto deploy on push works
+- [x] first deploy succeeds
+- [x] live URL works
+- [x] auto deploy on push works
 
 Test:
-- [ ] make CSS change
-- [ ] push
-- [ ] verify redeploy
+- [x] make CSS change
+- [x] push
+- [x] verify redeploy
 
 Do not continue until working.
 
@@ -386,8 +386,8 @@ Commit / push.
 - [x] Issuance → policy checks → ownership transition → settlement finality → invariant verification
 
 Verify (**please confirm**):
-- [ ] mode switching works
-- [ ] flow coherent
+- [x] mode switching works
+- [x] flow coherent
 
 Reviewer Credibility Gate (**please confirm**):
 - [ ] feels infrastructure-oriented
@@ -489,22 +489,22 @@ Commit / push.
 # Phase 8 — Content Layer
 
 ## Hidden Memo
-- [ ] write why-circle
-- [ ] subtle OCP reference
+- [x] write why-circle (hidden memo · palette + **`why-circle` explorer** path)
+- [x] subtle OCP reference (orthogonal policy vs settlement framing)
 
-Verify:
+Verify (**please confirm**):
 - [ ] concise
 - [ ] technically credible
 
 ---
 
 ## Top Bar Links
-- [ ] GitHub
-- [ ] Resume
-- [ ] Email
+- [x] GitHub (`js/content-config.js` → repo URL)
+- [x] Résumé (`assets/resume.pdf` — add PDF to repo before sharing)
+- [x] Email (`mailto:?subject=` or set `EMAIL_TO` in content-config)
 
-Verify:
-- [ ] links work
+Verify (**please confirm**):
+- [ ] links work in your deployed environment
 
 Commit / push.
 
