@@ -6,11 +6,13 @@
   "packageManager": "pnpm@10.12.1",
   "description": "Simulated internal control plane — trust invariants for programmable assets (Circle-facing artifact)",
   "scripts": {
-    "check": "node --check app.js && node --check js/desktop-shell.js && node --check js/command-palette.js && node --check js/lifecycle-simulator.js && node --check js/lifecycle-simulator-ui.js && node --check js/invariant-monitor.js && node --check js/invariant-monitor-ui.js && node --check js/parse-command.js && node --check js/explorer-commands.js && node --check js/chain-explorer-ui.js && node --check js/failure-scenarios.js && node --check js/failure-modes-ui.js && node --check js/content-config.js && node --check js/memo-content.js && node --check js/desktop-chrome.js && node --test",
+    "check": "node --check app.js && node --check js/desktop-shell.js && node --check js/command-palette.js && node --check js/lifecycle-simulator.js && node --check js/lifecycle-simulator-ui.js && node --check js/invariant-monitor.js && node --check js/invariant-monitor-ui.js && node --check js/parse-command.js && node --check js/explorer-commands.js && node --check js/chain-explorer-ui.js && node --check js/failure-scenarios.js && node --check js/failure-modes-ui.js && node --check js/architecture-ui.js && node --check js/content-config.js && node --check js/memo-content.js && node --check js/desktop-chrome.js && node scripts/validate-mermaid-architecture.mjs && node --test",
     "test": "node --test",
     "dev": "serve . -l 8080"
   },
   "devDependencies": {
+    "happy-dom": "^20.9.0",
+    "mermaid": "^11.14.0",
     "serve": "^14.2.4"
   }
 }

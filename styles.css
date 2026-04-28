@@ -570,9 +570,119 @@ body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(280px, 52vw, 540px);
-  height: clamp(148px, 24vh, 260px);
+  width: clamp(280px, 52vw, 560px);
+  height: clamp(220px, 34vh, 360px);
   z-index: 30;
+}
+
+/* Architecture window — system context + link to repo doc */
+
+.architecture-window-root {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.76rem;
+  line-height: 1.4;
+}
+
+.architecture-window-lede {
+  margin: 0;
+  color: #c9d1d9;
+}
+
+.architecture-window-label {
+  margin: 0.15rem 0 0;
+  font-size: 0.61rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #6e7681;
+}
+
+.architecture-window-label--sub {
+  margin-top: 0.35rem;
+}
+
+.architecture-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.45rem 0.55rem;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  background: rgba(13, 17, 23, 0.65);
+}
+
+.architecture-flow__lane {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.architecture-flow__arrow {
+  color: #6e7681;
+  font-size: 0.85rem;
+}
+
+.architecture-flow__node {
+  padding: 0.2rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid #30363d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+.architecture-flow__node--review {
+  color: #ffa657;
+  border-color: rgba(255, 166, 87, 0.35);
+  background: rgba(255, 166, 87, 0.06);
+}
+
+.architecture-flow__node--spa {
+  color: #79c0ff;
+  border-color: rgba(121, 192, 255, 0.35);
+  background: rgba(121, 192, 255, 0.06);
+}
+
+.architecture-flow__tiles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: center;
+}
+
+.architecture-tile {
+  padding: 0.15rem 0.42rem;
+  border-radius: 4px;
+  border: 1px dashed #30363d;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.65rem;
+  color: #8b949e;
+}
+
+.architecture-deploy-strip {
+  margin: 0;
+  font-size: 0.71rem;
+  color: #8b949e;
+}
+
+.architecture-window-footer {
+  margin: 0.15rem 0 0;
+  font-size: 0.7rem;
+  color: #6e7681;
+}
+
+.architecture-doc-link {
+  color: #79c0ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.architecture-doc-link:hover {
+  text-decoration: underline;
+  color: #a371f7;
 }
 
 /* ---- Phase 3 — command palette & memo stub ---- */

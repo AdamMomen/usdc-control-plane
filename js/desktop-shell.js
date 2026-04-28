@@ -6,6 +6,7 @@ import { mountInvariantMonitor } from "./invariant-monitor-ui.js";
 import { mountChainExplorer } from "./chain-explorer-ui.js";
 import { mountFailureModes } from "./failure-modes-ui.js";
 import { attachDesktopChrome } from "./desktop-chrome.js";
+import { mountArchitectureWindow } from "./architecture-ui.js";
 
 const BOOT_LINES = [
   "Loading USDC Control Plane...",
@@ -43,8 +44,7 @@ const WINDOWS = [
   {
     id: "architecture",
     title: "Architecture",
-    body:
-      "How I think about programmable asset infrastructure — flow diagram fills this window later.",
+    body: "",
     className: "win-architecture",
   },
 ];
@@ -192,6 +192,8 @@ function createWindow(def) {
     mountChainExplorer(body);
   } else if (def.id === "failure") {
     mountFailureModes(body);
+  } else if (def.id === "architecture") {
+    mountArchitectureWindow(body);
   } else {
     const p = document.createElement("p");
     p.className = "desktop-window__placeholder";
