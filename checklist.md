@@ -441,12 +441,12 @@ why-circle
 ```
 
 Tasks:
-- [ ] parser
-- [ ] outputs
-- [ ] unknown command handling
+- [x] parser (`js/parse-command.js`, re-exported from `app.js`)
+- [x] outputs (fixture lines in `js/explorer-commands.js`)
+- [x] unknown command handling
 
-Verify:
-- [ ] all commands work
+Verify (**please confirm**):
+- [ ] all commands work in the Chain State Explorer window
 
 Verification gates pass.
 

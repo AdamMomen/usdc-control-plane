@@ -235,9 +235,101 @@ body {
   right: auto;
   bottom: clamp(100px, 14vh, 160px);
   top: auto;
-  width: clamp(260px, 44vw, 560px);
-  height: clamp(168px, 28vh, 300px);
+  width: clamp(280px, 46vw, 600px);
+  height: auto;
+  min-height: clamp(228px, 36vh, 400px);
+  max-height: min(480px, 58vh);
   z-index: 10;
+}
+
+/* ---- Phase 6 — chain state explorer CLI ---- */
+
+.chain-explorer-host {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.chain-explorer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-height: 12rem;
+}
+
+.chain-explorer-note {
+  margin: 0;
+  font-size: 0.69rem;
+  line-height: 1.35;
+  color: #6e7681;
+}
+
+.chain-explorer-scroll {
+  flex: 1;
+  min-height: 7rem;
+  overflow: auto;
+  padding: 0.35rem 0.45rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.68rem;
+  line-height: 1.42;
+  color: #9ea7b3;
+  background: #080c11;
+  border: 1px solid #21262d;
+  border-radius: 6px;
+}
+
+.chain-explorer-line--cmd {
+  color: #8b949e;
+}
+
+.chain-explorer-line--out {
+  color: #c9d1d9;
+}
+
+.chain-explorer-line--err {
+  color: #f85149;
+}
+
+.chain-explorer-line--meta {
+  color: #6e7681;
+  margin-bottom: 0.35rem;
+}
+
+.chain-explorer-form {
+  flex-shrink: 0;
+}
+
+.chain-explorer-prompt {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.25rem 0.45rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.75rem;
+  color: #58a6ff;
+  background: #0d1117;
+  border: 1px solid #21262d;
+  border-radius: 6px;
+}
+
+.chain-explorer-chevron {
+  flex-shrink: 0;
+}
+
+.chain-explorer-input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font: inherit;
+  color: #e6edf3;
+}
+
+.chain-explorer-input::placeholder {
+  color: #484f58;
 }
 
 .win-failure {

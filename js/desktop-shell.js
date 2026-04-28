@@ -3,6 +3,7 @@
 import { attachCommandPalette } from "./command-palette.js";
 import { mountLifecycleSimulator } from "./lifecycle-simulator-ui.js";
 import { mountInvariantMonitor } from "./invariant-monitor-ui.js";
+import { mountChainExplorer } from "./chain-explorer-ui.js";
 
 const BOOT_LINES = [
   "Loading USDC Control Plane...",
@@ -28,7 +29,7 @@ const WINDOWS = [
   {
     id: "explorer",
     title: "Chain State Explorer",
-    body: "Command terminal (`inspect-finality`, `why-circle`, …) — wired in Phase 6.",
+    body: "",
     className: "win-explorer",
   },
   {
@@ -184,6 +185,8 @@ function createWindow(def) {
     mountLifecycleSimulator(body);
   } else if (def.id === "invariant") {
     mountInvariantMonitor(body);
+  } else if (def.id === "explorer") {
+    mountChainExplorer(body);
   } else {
     const p = document.createElement("p");
     p.className = "desktop-window__placeholder";
