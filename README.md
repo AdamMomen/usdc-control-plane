@@ -11,6 +11,12 @@ This repository implements the artifact described in [PRD.md](./PRD.md). See [ar
 
 There is **no backend**, **no database**, and **no live chain integrations** — simulation only.
 
+## Live review (Coolify)
+
+Deployed build for reviewers:
+
+**https://circle.coolify.momen.earth**
+
 ## Local development
 
 Install dependencies with [**pnpm**](https://pnpm.io/) (see `packageManager` in `package.json` — [Corepack](https://nodejs.org/api/corepack.html) can enable it: `corepack enable`).
