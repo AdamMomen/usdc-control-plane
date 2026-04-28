@@ -378,23 +378,18 @@ Commit / push.
 # Phase 4 — Hybrid Asset Lifecycle Simulator
 
 ## USDC Mode
-- [ ] mint flow
-- [ ] transfer
-- [ ] finality
-- [ ] reconciliation
+- [x] Mint → transfer → settlement → finality → reconciliation (`Run simulation`)
 
 ---
 
 ## Tokenized Asset Mode
-- [ ] issuance flow
-- [ ] ownership transitions
-- [ ] invariant verification
+- [x] Issuance → policy checks → ownership transition → settlement finality → invariant verification
 
-Verify:
+Verify (**please confirm**):
 - [ ] mode switching works
 - [ ] flow coherent
 
-Reviewer Credibility Gate:
+Reviewer Credibility Gate (**please confirm**):
 - [ ] feels infrastructure-oriented
 - [ ] avoids toy demo feel
 

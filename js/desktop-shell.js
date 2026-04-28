@@ -1,6 +1,7 @@
 /** Phase 2 — boot overlay + draggable desktop windows. Loaded only in browser. */
 
 import { attachCommandPalette } from "./command-palette.js";
+import { mountLifecycleSimulator } from "./lifecycle-simulator-ui.js";
 
 const BOOT_LINES = [
   "Loading USDC Control Plane...",
@@ -14,7 +15,7 @@ const WINDOWS = [
   {
     id: "lifecycle",
     title: "Asset Lifecycle",
-    body: "Hybrid USDC / tokenized flow — simulator UI in a later phase.",
+    body: "",
     className: "win-lifecycle",
   },
   {
@@ -177,10 +178,15 @@ function createWindow(def) {
 
   const body = document.createElement("div");
   body.className = "desktop-window__body";
-  const p = document.createElement("p");
-  p.className = "desktop-window__placeholder";
-  p.textContent = def.body;
-  body.appendChild(p);
+
+  if (def.id === "lifecycle") {
+    mountLifecycleSimulator(body);
+  } else {
+    const p = document.createElement("p");
+    p.className = "desktop-window__placeholder";
+    p.textContent = def.body;
+    body.appendChild(p);
+  }
 
   el.appendChild(head);
   el.appendChild(body);
