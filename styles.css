@@ -196,6 +196,11 @@ body {
   pointer-events: none;
 }
 
+/* Author `display:flex`/`display:block` overrides the UA `hidden` rule — force hide when closed */
+.palette-overlay[hidden] {
+  display: none !important;
+}
+
 .palette-overlay:not([hidden]) {
   pointer-events: auto;
 }
@@ -300,6 +305,10 @@ body {
   justify-content: center;
   padding: 2rem;
   pointer-events: none;
+}
+
+.memo-overlay[hidden] {
+  display: none !important;
 }
 
 .memo-overlay:not([hidden]) {

@@ -121,9 +121,16 @@ export function attachCommandPalette(root, { focusWindow }) {
     </div>
   `;
   root.appendChild(memoOverlay);
+  memoOverlay.setAttribute("aria-hidden", "true");
 
-  memoOverlay.querySelector(".memo-backdrop")?.addEventListener("click", closeMemo);
-  memoOverlay.querySelector(".memo-close")?.addEventListener("click", closeMemo);
+  memoOverlay.querySelector(".memo-backdrop")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeMemo();
+  });
+  memoOverlay.querySelector(".memo-close")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeMemo();
+  });
 
   function renderList() {
     const items = filterPaletteEntries(input.value);
@@ -189,12 +196,19 @@ export function attachCommandPalette(root, { focusWindow }) {
   function openMemo() {
     memoOpen = true;
     memoOverlay.hidden = false;
-    memoOverlay.querySelector(".memo-close")?.focus();
+    memoOverlay.removeAttribute("aria-hidden");
+    window.requestAnimationFrame(() => {
+      memoOverlay.querySelector(".memo-close")?.focus();
+    });
   }
 
   function closeMemo() {
+    if (!memoOpen) {
+      return;
+    }
     memoOpen = false;
     memoOverlay.hidden = true;
+    memoOverlay.setAttribute("aria-hidden", "true");
   }
 
   function togglePalette() {
