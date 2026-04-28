@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <linearGradient id="bz-title" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffa24a"/>
+      <stop offset="1" stop-color="#ea682b"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="#151210"/>
+  <rect
+    x="5"
+    y="6"
+    width="22"
+    height="21"
+    rx="3"
+    fill="#1f1d1b"
+    stroke="#ea682b"
+    stroke-width="1.25"
+  />
+  <path fill="url(#bz-title)" d="M5 9a3 3 0 0 1 3-3h16a3 3 0 0 1 3 3v5H5z"/>
+  <circle cx="9.5" cy="9.75" r="1.05" fill="#151210" opacity="0.45"/>
+  <circle cx="12.5" cy="9.75" r="1.05" fill="#151210" opacity="0.35"/>
+</svg>
