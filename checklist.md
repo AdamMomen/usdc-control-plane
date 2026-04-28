@@ -499,8 +499,9 @@ Verify (**please confirm**):
 ---
 
 ## Top Bar Links
-- [x] GitHub (`js/content-config.js` → repo URL)
-- [x] Résumé (`assets/resume.pdf` — add PDF to repo before sharing)
+- [x] GitHub (`content-config.js` → profile URL)
+- [x] Résumé (Google Doc URL in `content-config.js`)
+- [x] X (`content-config.js` → `X_URL`)
 - [x] Email (`mailto:?subject=` or set `EMAIL_TO` in content-config)
 
 Verify (**please confirm**):

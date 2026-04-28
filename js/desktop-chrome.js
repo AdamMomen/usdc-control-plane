@@ -1,6 +1,6 @@
 /** Phase 8 — Desktop top chrome (external links). */
 
-import { GITHUB_URL, RESUME_PATH, mailtoHref } from "./content-config.js";
+import { GITHUB_URL, RESUME_URL, X_URL, mailtoHref } from "./content-config.js";
 
 /**
  * Prepends persistent nav above simulator desktop.
@@ -32,15 +32,20 @@ export function attachDesktopChrome(root) {
   gh.textContent = "GitHub";
 
   const cv = document.createElement("a");
-  cv.href = RESUME_PATH;
+  cv.href = RESUME_URL;
   cv.rel = "noreferrer noopener";
   cv.target = "_blank";
   cv.className = "desktop-chrome-link";
-  cv.setAttribute(
-    "title",
-    "Add your PDF at assets/resume.pdf (static deploy includes this folder).",
-  );
+  cv.setAttribute("title", "Résumé — Google Docs");
   cv.textContent = "Résumé";
+
+  const xh = document.createElement("a");
+  xh.href = X_URL;
+  xh.rel = "noreferrer noopener";
+  xh.target = "_blank";
+  xh.className = "desktop-chrome-link";
+  xh.setAttribute("title", "@0xmomen on X");
+  xh.textContent = "X";
 
   const mail = document.createElement("a");
   mail.href = mailtoHref();
@@ -49,6 +54,7 @@ export function attachDesktopChrome(root) {
 
   links.appendChild(gh);
   links.appendChild(cv);
+  links.appendChild(xh);
   links.appendChild(mail);
 
   nav.appendChild(brand);

@@ -36,7 +36,7 @@ export function populateHiddenMemo(memoOverlay, onClose) {
   const pCta = document.createElement("p");
   pCta.className = "memo-body-text memo-note";
   pCta.textContent =
-    "Links: desktop bar opens GitHub, résumé (place assets/resume.pdf in the repo), and mail with subject prefilled. Everything here is mocked UI—no ledger access.";
+    "Links: desktop bar — GitHub profile, résumé (Google Docs), X @0xmomen, mail with subject prefilled. Artifact UI only—no ledger access.";
 
   const btn = document.createElement("button");
   btn.type = "button";

@@ -2,11 +2,18 @@
  * Edit before deployment — outbound links used by desktop chrome & memo footer.
  */
 
-/** Repository or profile URL */
-export const GITHUB_URL = "https://github.com/AdamMomen/usdc-control-plane";
+/** GitHub profile */
+export const GITHUB_URL = "https://github.com/AdamMomen";
 
-/** Public résumé PDF co-located in the static root (bundle your own file here). */
-export const RESUME_PATH = "assets/resume.pdf";
+/** Résumé (Google Doc — ensure link sharing is set for reviewers). */
+export const RESUME_URL =
+  "https://docs.google.com/document/d/1Jxh7XueuqWzeRKpi7iXfoyaOskstjHVNRYx1uP4RBFs/edit?usp=sharing";
+
+/** 𝕏 profile */
+export const X_URL = "https://x.com/0xmomen";
+
+/** Legacy: static PDF fallback path (unused if RESUME_URL is set). Kept for self-host parity. */
+export const RESUME_PDF_FALLBACK_PATH = "assets/resume.pdf";
 
 /** If set, Mail To link prefills recipient; otherwise `mailto:?subject=…` opens blank To. */
 export const EMAIL_TO = "";
