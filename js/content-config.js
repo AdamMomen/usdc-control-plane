@@ -16,7 +16,7 @@ export const X_URL = "https://x.com/0xmomen";
 export const RESUME_PDF_FALLBACK_PATH = "assets/resume.pdf";
 
 /** If set, Mail To link prefills recipient; otherwise `mailto:?subject=…` opens blank To. */
-export const EMAIL_TO = "";
+export const EMAIL_TO = "info@adammomen.com";
 
 export const MAILTO_SUBJECT = "USDC Control Plane";
 
