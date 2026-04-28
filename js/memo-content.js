@@ -28,11 +28,6 @@ export function populateHiddenMemo(memoOverlay, onClose) {
   p2.textContent =
     "If you landed here via the \"why-circle\" explorer command or the palette, the signal is alignment with USDC-centric work: programmable money needs clear finality stories, invariant hygiene, and disciplined recovery paths under stress.";
 
-  const pOcp = document.createElement("p");
-  pOcp.className = "memo-body-text memo-ocp";
-  pOcp.textContent =
-    "On OCP: I separate policy/decision planes from settlement execution in the simulation—not as a trademark claim but as the orthogonal-concerns pattern others cite when layering open-composable policy over settlement cores. Illustrative wording only.";
-
   const pCta = document.createElement("p");
   pCta.className = "memo-body-text memo-note";
   pCta.textContent =
@@ -51,7 +46,6 @@ export function populateHiddenMemo(memoOverlay, onClose) {
   panel.appendChild(h);
   panel.appendChild(p1);
   panel.appendChild(p2);
-  panel.appendChild(pOcp);
   panel.appendChild(pCta);
   panel.appendChild(btn);
 }

@@ -65,9 +65,9 @@ export function mountLifecycleSimulator(container) {
   log.setAttribute("aria-label", "Simulation log");
 
   const foot = document.createElement("p");
-  foot.className = "lifecycle-ocp-note";
+  foot.className = "lifecycle-sim-footnote";
   foot.textContent =
-    "Modeling approach informed by OCP-style separation of concerns (simulation).";
+    "Policy-facing stages and settlement-facing stages are modeled separately (simulation only).";
 
   root.appendChild(modeRow);
   root.appendChild(stepsEl);

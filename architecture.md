@@ -609,9 +609,9 @@ Security assumptions:
 
 ---
 
-# 19. OCP Conceptual Mapping (Subtle Reference)
+# 19. Conceptual layering (simulation-only)
 
-Conceptual inspiration only:
+Conceptual separation of policy vs settlement paths—inspiration only:
 
 ```mermaid
 flowchart TD

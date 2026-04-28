@@ -763,11 +763,6 @@ body {
   color: #c9d1d9;
 }
 
-.memo-ocp {
-  padding-left: 0.6rem;
-  border-left: 2px solid rgba(162, 113, 247, 0.45);
-}
-
 .memo-note {
   font-size: 0.72rem;
   color: #8b949e !important;
@@ -925,7 +920,7 @@ body {
   color: #8b949e;
 }
 
-.lifecycle-ocp-note {
+.lifecycle-sim-footnote {
   margin: 0;
   font-size: 0.66rem;
   line-height: 1.35;

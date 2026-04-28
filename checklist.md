@@ -490,7 +490,6 @@ Commit / push.
 
 ## Hidden Memo
 - [x] write why-circle (hidden memo · palette + **`why-circle` explorer** path)
-- [x] subtle OCP reference (orthogonal policy vs settlement framing)
 
 Verify (**please confirm**):
 - [ ] concise
@@ -517,7 +516,6 @@ Check:
 - [ ] no blockchain clichés
 - [ ] no exaggerated claims
 - [ ] Circle relevance explicit
-- [ ] OCP reference accurate
 - [ ] Simulation Mode disclaimer visible
 - [ ] CTA copy clear
 

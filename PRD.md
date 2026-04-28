@@ -149,7 +149,7 @@ Invariant verification
 ```
 
 Subtle note:
-Modeling influenced by lessons from OCP.
+Policy checks and settlement progression are modeled as distinct concerns in the simulator.
 
 ---
 
