@@ -13,19 +13,29 @@ There is **no backend**, **no database**, and **no live chain integrations** —
 
 ## Local development
 
-Serve the folder with any static server, for example:
+Install dependencies with [**pnpm**](https://pnpm.io/) (see `packageManager` in `package.json` — [Corepack](https://nodejs.org/api/corepack.html) can enable it: `corepack enable`).
 
 ```bash
-python3 -m http.server 8080
+pnpm install
+pnpm run dev
 ```
 
-Then open `http://localhost:8080`.
+Then open `http://localhost:8080`. The dev script uses [`serve`](https://github.com/vercel/serve).
+
+You can swap in any static file server you prefer, for example:
+
+```bash
+php -S localhost:8080 -t .
+# or
+python3 -m http.server 8080
+```
 
 ## Checks
 
 ```bash
-npm install   # optional; no runtime deps yet — installs nothing extra
-npm run check # syntax check app.js + unit tests
+pnpm install
+pnpm run check   # syntax check app.js + unit tests
+pnpm test        # tests only
 ```
 
 ## Docker

@@ -39,6 +39,8 @@ node --check app.js
 Pass criteria:
 - no syntax errors
 
+**(you)** Run `pnpm run check` (includes syntax) and confirm it passes locally.
+
 ---
 
 ## Docker Build Check
@@ -51,6 +53,8 @@ Pass criteria:
 - build succeeds
 - no missing files
 
+**(you)** Docker may not run in CI or every environment — run locally when Docker is available, then confirm the image serves the SPA.
+
 ---
 
 ## Optional Unit Tests
@@ -62,19 +66,19 @@ node --test
 Tests cover:
 
 ### Command Parser
-- [ ] `why-circle`
-- [ ] `inspect-finality`
-- [ ] unknown command handling
+- [x] `why-circle`
+- [x] `inspect-finality`
+- [x] unknown command handling
 
 ### Invariant Resolver
-- [ ] successful lifecycle returns PASS
-- [ ] replay protection logic
-- [ ] reconciliation recovery
+- [x] successful lifecycle returns PASS
+- [x] replay protection logic
+- [x] reconciliation recovery
 
 ### Failure Modes
-- [ ] duplicate replay scenario valid
-- [ ] disturbance scenario valid
-- [ ] repair scenario valid
+- [x] duplicate replay scenario valid
+- [x] disturbance scenario valid
+- [x] repair scenario valid
 
 Pass criteria:
 - all tests green
@@ -83,9 +87,18 @@ Pass criteria:
 
 ## Gate 2 — Manual Local Verification
 
-Run locally:
+Run locally (repo root):
 
 ```bash
+pnpm install
+pnpm run dev
+```
+
+This uses [`serve`](https://github.com/vercel/serve) on port **8080**. Alternatives you can use instead:
+
+```bash
+php -S localhost:8080 -t .
+# or
 python3 -m http.server 8080
 ```
 
@@ -95,7 +108,7 @@ Open:
 http://localhost:8080
 ```
 
-Verify:
+Verify (tick when true — **please confirm**):
 
 - [ ] page loads
 - [ ] feature behaves correctly
@@ -140,7 +153,7 @@ Do not continue until approved.
 ## Create repository
 - [x] Create GitHub repo `usdc-control-plane`
 - [x] Add PRD.md
-- [ ] Add README
+- [x] Add README
 
 Commit:
 
@@ -150,9 +163,10 @@ git commit -m "Initial setup"
 git push
 ```
 
-Verify:
-- [ ] repo exists
-- [ ] clean git status
+Verify (agent cannot finish these without you — **please confirm**):
+
+- [ ] Remote exists and you can `git pull` / see this commit on GitHub
+- [ ] `git status` clean after sync (no unexpected local changes)
 
 ---
 
@@ -169,11 +183,14 @@ tests/
 
 ## package.json
 
+Use **pnpm** (see `packageManager` in `package.json`). Example shape:
+
 ```json
 {
   "scripts": {
-    "check":"node --check app.js && node --test",
-    "test":"node --test"
+    "check": "node --check app.js && node --test",
+    "test": "node --test",
+    "dev": "serve . -l 8080"
   }
 }
 ```
@@ -181,19 +198,21 @@ tests/
 ---
 
 ## Initial test scaffolding
-- [ ] command parser tests
-- [ ] invariant tests
-- [ ] failure mode tests
+- [x] command parser tests
+- [x] invariant tests
+- [x] failure mode tests
 
 Run:
 
 ```bash
-npm run check
+pnpm install
+pnpm run check
 ```
 
-Verify:
-- [ ] syntax clean
-- [ ] tests green
+Verify (**please confirm**):
+
+- [ ] syntax clean (no `node --check` errors)
+- [ ] tests green (`node --test` passes)
 
 Commit.
 
@@ -212,15 +231,23 @@ nginx.conf
 ```
 
 Tasks:
-- [ ] base HTML shell
-- [ ] base CSS
-- [ ] base JS bootstrap
-- [ ] assets folder
-- [ ] resume asset
+- [x] base HTML shell
+- [x] base CSS
+- [x] base JS bootstrap
+- [x] assets folder
+- [x] resume asset (`assets/resume.txt` placeholder — replace with PDF when wiring links in Phase 8)
 
-Verify:
-- [ ] shell loads
-- [ ] no console errors
+Verify (**please confirm** via Gate 2 + below):
+
+- [ ] shell loads (`pnpm run dev` or PHP / Python server)
+- [ ] no console errors in browser devtools
+
+**Please verify Phase 0 / 0.5 / 1 before Phase 1.5:**
+
+1. Does `pnpm run check` pass on your machine?
+2. Does `pnpm run dev` (or your PHP static server) show the scaffold without errors?
+3. Any issues before Coolify deployment?
+4. Approved to continue to Phase 1.5 — First Coolify deployment?
 
 Commit / push.
 

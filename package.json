@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.12.1",
   "description": "Simulated internal control plane — trust invariants for programmable assets (Circle-facing artifact)",
   "scripts": {
     "check": "node --check app.js && node --test",
-    "test": "node --test"
+    "test": "node --test",
+    "dev": "serve . -l 8080"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
   }
 }
