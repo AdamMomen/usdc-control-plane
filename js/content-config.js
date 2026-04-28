@@ -5,10 +5,6 @@
 /** GitHub profile */
 export const GITHUB_URL = "https://github.com/AdamMomen";
 
-/** Source-of-truth architecture doc (Mermaid diagrams; deep narrative). Opens from Architecture window. */
-export const ARCHITECTURE_DOC_URL =
-  "https://github.com/AdamMomen/fluffy-funicular/blob/main/architecture.md";
-
 /** Résumé (Google Doc — ensure link sharing is set for reviewers). */
 export const RESUME_URL =
   "https://docs.google.com/document/d/1Jxh7XueuqWzeRKpi7iXfoyaOskstjHVNRYx1uP4RBFs/edit?usp=sharing";

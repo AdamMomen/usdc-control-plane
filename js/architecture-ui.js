@@ -1,6 +1,4 @@
-/** In-app Architecture window — abbreviated system view + link to repo `architecture.md`. */
-
-import { ARCHITECTURE_DOC_URL } from "./content-config.js";
+/** In-app Architecture window — abbreviated system view. */
 
 /**
  * @param {HTMLElement} container `.desktop-window__body`
@@ -35,25 +33,5 @@ export function mountArchitectureWindow(container) {
     `<span class="architecture-tile">Failure</span>` +
     `</div>`;
 
-  const deployLabel = document.createElement("div");
-  deployLabel.className = "architecture-window-label architecture-window-label--sub";
-  deployLabel.textContent = "DEPLOYMENT";
-
-  const deploy = document.createElement("p");
-  deploy.className = "architecture-deploy-strip";
-  deploy.textContent = "Repo → Coolify → static HTTPS (HTML / CSS / JS only).";
-
-  const footer = document.createElement("p");
-  footer.className = "architecture-window-footer";
-
-  const docLink = document.createElement("a");
-  docLink.className = "architecture-doc-link";
-  docLink.href = ARCHITECTURE_DOC_URL;
-  docLink.rel = "noreferrer noopener";
-  docLink.target = "_blank";
-  docLink.textContent = "architecture.md";
-
-  footer.append(document.createTextNode("Deep diagrams & narrative → "), docLink);
-
-  container.append(intro, sectionLabel, flow, deployLabel, deploy, footer);
+  container.append(intro, sectionLabel, flow);
 }

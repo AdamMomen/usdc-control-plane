@@ -9,7 +9,7 @@ import { attachDesktopChrome } from "./desktop-chrome.js";
 import { mountArchitectureWindow } from "./architecture-ui.js";
 
 const BOOT_LINES = [
-  "Loading USDC Control Plane...",
+  "Loading BackOS...",
   "Verifying trust invariants...",
   "Checking settlement assumptions...",
   "Scanning failure domains...",
@@ -90,16 +90,7 @@ function runBootOverlay(root, onRevealDesktop) {
   log.className = "boot-log";
   log.setAttribute("aria-live", "polite");
 
-  const skipWrap = document.createElement("div");
-  skipWrap.className = "boot-skip-row";
-  const skip = document.createElement("button");
-  skip.type = "button";
-  skip.className = "boot-skip";
-  skip.textContent = "Skip boot";
-  skipWrap.appendChild(skip);
-
   overlay.appendChild(log);
-  overlay.appendChild(skipWrap);
   root.appendChild(overlay);
 
   let done = false;
@@ -122,7 +113,6 @@ function runBootOverlay(root, onRevealDesktop) {
     }
   }
   document.addEventListener("keydown", onKey);
-  skip.addEventListener("click", finish);
 
   (async () => {
     for (const line of BOOT_LINES) {

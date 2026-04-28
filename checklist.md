@@ -276,12 +276,12 @@ Do not continue until working.
 
 ## Boot Sequence
 - [x] animated startup logs
-- [x] skip boot (button + **Escape**)
+- [x] skip boot (**Escape** only — no button)
 - [x] desktop reveal
 
 Verify (**please confirm**):
 - [ ] smooth animation
-- [ ] skip works
+- [ ] **Escape** skips boot
 - [ ] live deployment works (after Phase 1.5 Coolify is live)
 
 ---
@@ -326,7 +326,7 @@ Evolve the Phase 2 shell forward: same window manager and apps—clearer **deskt
 
 Build:
 
-- [ ] **BackOS** identity (name + visuals consistent with existing boot/desktop styling)
+- [x] **BackOS** identity (name + visuals consistent with existing boot/desktop styling)
 - [ ] **Icons-first desktop**: apps appear as icons; **opening a window is explicit** (click/double-click)—initial desktop is calm, not a pile of open windows
 - [ ] Trash on the desktop (affordance + behavior—empty vs items, optional restore)
 

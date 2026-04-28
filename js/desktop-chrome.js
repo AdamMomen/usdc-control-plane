@@ -18,7 +18,8 @@ export function attachDesktopChrome(root) {
   const brand = document.createElement("div");
   brand.className = "desktop-chrome-brand";
   brand.innerHTML =
-    `<span class="desktop-chrome-title">USDC Control Plane</span>` +
+    `<span class="desktop-chrome-title">BackOS</span>` +
+    `<span class="desktop-chrome-tagline">USDC Control Plane</span>` +
     `<span class="desktop-chrome-badge">Simulation mode</span>`;
 
   const links = document.createElement("div");
