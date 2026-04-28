@@ -89,22 +89,13 @@ export function getFailureScenarioStages(id) {
   return FAILURE_SCENARIOS[id] ?? [];
 }
 
-function boot() {
-  const root = document.getElementById("app-root");
-  if (!root) {
-    return;
-  }
-  root.innerHTML = "";
-  const banner = document.createElement("div");
-  banner.className = "boot-banner";
-  banner.textContent = "USDC Control Plane";
-  root.appendChild(banner);
-}
-
 if (typeof document !== "undefined") {
+  const start = () => {
+    import("./js/desktop-shell.js").then((m) => m.mount("#app-root"));
+  };
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", boot);
+    document.addEventListener("DOMContentLoaded", start);
   } else {
-    boot();
+    start();
   }
 }

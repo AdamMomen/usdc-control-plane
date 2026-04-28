@@ -305,31 +305,31 @@ Do not continue until working.
 # Phase 2 — Desktop Shell
 
 ## Boot Sequence
-- [ ] animated startup logs
-- [ ] skip boot
-- [ ] desktop reveal
+- [x] animated startup logs
+- [x] skip boot (button + **Escape**)
+- [x] desktop reveal
 
-Verify:
+Verify (**please confirm**):
 - [ ] smooth animation
 - [ ] skip works
-- [ ] live deployment works
+- [ ] live deployment works (after Phase 1.5 Coolify is live)
 
 ---
 
 ## Window Manager
 Build:
-- [ ] Lifecycle window
-- [ ] Invariant window
-- [ ] Explorer window
-- [ ] Failure window
-- [ ] Architecture window
+- [x] Lifecycle window
+- [x] Invariant window
+- [x] Explorer window
+- [x] Failure window
+- [x] Architecture window
 
 Implement:
-- [ ] dragging
-- [ ] focus/z-index
-- [ ] default positions
+- [x] dragging
+- [x] focus/z-index
+- [x] default positions
 
-Verify:
+Verify (**please confirm**):
 - [ ] drag works
 - [ ] stacking works
 - [ ] layout balanced
@@ -337,7 +337,7 @@ Verify:
 ---
 
 ## Verification
-- [ ] Automated checks
+- [x] Automated checks (`pnpm run check`)
 - [ ] Local verification
 - [ ] Live verification
 - [ ] User approval
