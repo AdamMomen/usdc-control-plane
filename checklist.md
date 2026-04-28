@@ -459,23 +459,24 @@ Commit / push.
 # Phase 7 — Failure Modes
 
 ## Duplicate Replay
-- [ ] detect
-- [ ] contain
-- [ ] recover
+- [x] detect
+- [x] contain
+- [x] recover
+- [x] invariant re-check (`Run scenario`)
 
 ## Finality Disturbance
-- [ ] disturb
-- [ ] revalidate
-- [ ] recover
+- [x] disturb
+- [x] revalidate
+- [x] recover
 
 ## Reconciliation Drift
-- [ ] mismatch
-- [ ] repair
-- [ ] invariant re-check
+- [x] mismatch
+- [x] repair
+- [x] invariant re-check
 
-Verify:
+Verify (**please confirm**):
 - [ ] scenarios credible
-- [ ] recovery clear
+- [ ] recovery clear (PRD summary strip after drill)
 
 Verification gates pass.
 

@@ -337,9 +337,162 @@ body {
   right: clamp(12px, 2.5vw, 28px);
   bottom: clamp(100px, 14vh, 160px);
   top: auto;
-  width: clamp(260px, 44vw, 560px);
-  height: clamp(168px, 28vh, 300px);
+  width: clamp(280px, 46vw, 600px);
+  height: auto;
+  min-height: clamp(260px, 42vh, 520px);
+  max-height: min(560px, 86vh);
   z-index: 10;
+}
+
+/* ---- Phase 7 — failure modes drills ---- */
+
+.failure-modes-host {
+  overflow: auto;
+}
+
+.failure-modes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 0;
+}
+
+.failure-modes-intro {
+  margin: 0;
+  font-size: 0.69rem;
+  line-height: 1.35;
+  color: #6e7681;
+}
+
+.failure-scenario-card {
+  padding: 0.5rem 0.65rem;
+  border: 1px solid #21262d;
+  border-radius: 8px;
+  background: #0f1419;
+}
+
+.failure-scenario-heading {
+  margin: 0 0 0.2rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #d29922;
+}
+
+.failure-scenario-blurb {
+  margin: 0 0 0.45rem;
+  font-size: 0.7rem;
+  line-height: 1.4;
+  color: #9ea7b3;
+}
+
+.failure-stage-list {
+  margin: 0 0 0.55rem;
+  padding: 0 0 0 1.05rem;
+  font-size: 0.72rem;
+  line-height: 1.42;
+  color: #c9d1d9;
+}
+
+.failure-stage {
+  padding: 0.12rem 0;
+}
+
+.failure-stage .failure-stage-text {
+  color: inherit;
+}
+
+.failure-stage-idx {
+  display: inline-block;
+  width: 1rem;
+  margin-right: 0.35rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: #6e7681;
+}
+
+.failure-stage--pending {
+  opacity: 0.7;
+}
+
+.failure-stage--active .failure-stage-idx {
+  color: #d29922;
+}
+
+.failure-stage--active .failure-stage-text {
+  color: #e6edf3;
+}
+
+.failure-stage--done .failure-stage-idx {
+  color: #3fb950;
+}
+
+.failure-stage--done .failure-stage-text {
+  color: #8b949e;
+}
+
+.failure-run-btn {
+  font-family: inherit;
+  font-size: 0.72rem;
+  padding: 0.35rem 0.65rem;
+  cursor: pointer;
+  color: #e6edf3;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+}
+
+.failure-run-btn:hover:not(:disabled) {
+  border-color: #8b949e;
+}
+
+.failure-run-btn:disabled {
+  opacity: 0.45;
+}
+
+.failure-prd-summary {
+  margin-top: 0.35rem;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid #30363d;
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(35, 134, 54, 0.08), transparent);
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.35s ease,
+    transform 0.35s ease;
+}
+
+.failure-prd-summary--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.failure-summary-dl {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.2rem 0.85rem;
+  margin: 0;
+  align-items: baseline;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.72rem;
+}
+
+.failure-summary-dt {
+  margin: 0;
+  grid-column: 1;
+  color: #8b949e;
+}
+
+.failure-summary-val {
+  margin: 0;
+  grid-column: 2;
+  font-weight: 600;
+  color: #3fb950;
+  text-align: right;
+}
+
+.failure-summary-val--accent {
+  color: #58a6ff;
 }
 
 .win-architecture {

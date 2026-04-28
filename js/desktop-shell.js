@@ -4,6 +4,7 @@ import { attachCommandPalette } from "./command-palette.js";
 import { mountLifecycleSimulator } from "./lifecycle-simulator-ui.js";
 import { mountInvariantMonitor } from "./invariant-monitor-ui.js";
 import { mountChainExplorer } from "./chain-explorer-ui.js";
+import { mountFailureModes } from "./failure-modes-ui.js";
 
 const BOOT_LINES = [
   "Loading USDC Control Plane...",
@@ -35,7 +36,7 @@ const WINDOWS = [
   {
     id: "failure",
     title: "Failure Modes",
-    body: "Duplicate replay · finality disturbance · reconciliation drift.",
+    body: "",
     className: "win-failure",
   },
   {
@@ -187,6 +188,8 @@ function createWindow(def) {
     mountInvariantMonitor(body);
   } else if (def.id === "explorer") {
     mountChainExplorer(body);
+  } else if (def.id === "failure") {
+    mountFailureModes(body);
   } else {
     const p = document.createElement("p");
     p.className = "desktop-window__placeholder";

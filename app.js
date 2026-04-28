@@ -40,25 +40,11 @@ export function reconciliationCanRecover(ledgerA, ledgerB) {
   return ledgerA === ledgerB;
 }
 
-export const FAILURE_SCENARIOS = {
-  "duplicate-replay": ["detect", "contain", "recover", "invariant-recheck"],
-  "finality-disturbance": ["disturb", "revalidate", "recover"],
-  "reconciliation-drift": ["mismatch", "repair", "invariant-recheck"],
-};
-
-/**
- * @param {keyof FAILURE_SCENARIOS} id
- */
-export function failureScenarioIsValid(id) {
-  return Object.prototype.hasOwnProperty.call(FAILURE_SCENARIOS, id);
-}
-
-/**
- * @param {keyof FAILURE_SCENARIOS} id
- */
-export function getFailureScenarioStages(id) {
-  return FAILURE_SCENARIOS[id] ?? [];
-}
+export {
+  FAILURE_SCENARIOS,
+  failureScenarioIsValid,
+  getFailureScenarioStages,
+} from "./js/failure-scenarios.js";
 
 if (typeof document !== "undefined") {
   const start = () => {
