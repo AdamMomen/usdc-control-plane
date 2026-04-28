@@ -114,6 +114,320 @@ body {
   min-height: 0;
 }
 
+.desktop-window.desktop-window--closed:not(.desktop-window--minimized) {
+  display: none !important;
+}
+
+.desktop-window.desktop-window--minimized {
+  display: flex !important;
+  max-height: 2.85rem;
+}
+
+.desktop-window.desktop-window--minimized .desktop-window__body {
+  display: none !important;
+}
+
+.desktop-window.desktop-window--minimized .desktop-window__head {
+  flex: 1;
+  padding: 0.32rem 0.45rem;
+  border-bottom: none;
+}
+
+.desktop-window.desktop-window--minimized .desktop-window__btn--minimize {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.desktop-window.desktop-window--minimized .desktop-window__title {
+  font-size: 0.7rem;
+}
+
+/* Phase 2.5 — draggable desktop icons */
+
+.desktop-icons-surface {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  pointer-events: none;
+}
+
+.desktop-draggable-icon {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.28rem;
+  width: 5.65rem;
+  margin: 0;
+  padding: 0;
+  /* Idle: arrow like Windows desktop; grabbing is set via JS during icon drag only. */
+  cursor: default;
+  font-family: inherit;
+  color: inherit;
+  text-align: center;
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  box-sizing: border-box;
+}
+
+.desktop-draggable-icon:focus-visible {
+  outline: 2px solid var(--accent-bright);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+.desktop-draggable-icon-tile {
+  display: grid;
+  place-items: center;
+  width: 3.1rem;
+  height: 3.1rem;
+  margin: 0 auto;
+  border-radius: 10px;
+  font-size: 1.75rem;
+  line-height: 1;
+  color: inherit;
+  background: rgba(26, 22, 19, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  box-shadow:
+    0 0 0 1px rgba(0, 0, 0, 0.2) inset,
+    0 8px 20px rgba(0, 0, 0, 0.32);
+}
+
+.desktop-draggable-icon-label {
+  max-width: 5.85rem;
+  font-size: 0.62rem;
+  font-weight: 600;
+  line-height: 1.28;
+  letter-spacing: 0.02em;
+  color: #fff;
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.9),
+    0 0 1px rgba(0, 0, 0, 0.8);
+}
+
+.desktop-draggable-icon--program .desktop-draggable-icon-tile {
+  background: rgba(36, 30, 26, 0.78);
+}
+
+/* Doc / outbound tiles (PostHog-style “file on desk”) */
+.desktop-draggable-icon--file {
+  width: 6rem;
+}
+
+/* Hover hint: URL still appears in browser status bar for real links; this repeats it in-page. */
+.desktop-draggable-icon--file::after {
+  content: attr(data-link-hint);
+  display: block;
+  position: absolute;
+  left: 50%;
+  top: calc(100% + 0.35rem);
+  transform: translateX(-50%);
+  max-width: 11rem;
+  padding: 0.28rem 0.45rem;
+  font-size: 0.57rem;
+  font-weight: 600;
+  line-height: 1.28;
+  white-space: nowrap;
+  letter-spacing: 0.015em;
+  color: rgba(255, 255, 249, 0.98);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.75),
+    0 0 1px rgba(0, 0, 0, 0.5);
+  background: rgba(18, 16, 14, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  box-shadow:
+    0 4px 14px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  z-index: 12;
+  transition:
+    opacity 0.14s ease,
+    visibility 0.14s ease;
+}
+
+.desktop-draggable-icon--file:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+
+.desktop-draggable-file-preview {
+  width: 4.95rem;
+  min-height: 4.85rem;
+  padding: 0.45rem 0.42rem;
+  border-radius: 10px;
+  background: linear-gradient(175deg, #faf8f6 0%, #ece9e6 82%, #e2ded9 100%);
+  border: 1px solid rgba(62, 55, 50, 0.18);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.65) inset,
+    0 10px 22px rgba(0, 0, 0, 0.2);
+}
+
+.desktop-draggable-icon--doc .desktop-draggable-file-preview {
+  background: linear-gradient(175deg, #fffdf9 0%, #eef4ff 100%);
+}
+
+.desktop-draggable-icon--code .desktop-draggable-file-preview {
+  background: linear-gradient(175deg, #f6fdf9 0%, #eaf7f0 100%);
+}
+
+.desktop-draggable-file-glyph {
+  display: grid;
+  place-items: center;
+  font-size: 1.95rem;
+  line-height: 1;
+}
+
+.desktop-draggable-file-caption {
+  display: block;
+  margin-top: 0.4rem;
+  font-size: 0.53rem;
+  font-weight: 500;
+  line-height: 1.25;
+  color: #574c45;
+}
+
+.desktop-draggable-icon--file .desktop-draggable-icon-label {
+  color: rgba(255, 255, 250, 0.98);
+  max-width: 6.75rem;
+}
+
+/* First-run: tour does not auto-open; this is the quiet entry point */
+.desktop-onboarding-invite {
+  position: absolute;
+  right: clamp(12px, 3vw, 22px);
+  bottom: clamp(48px, 8vh, 88px);
+  z-index: 28;
+  padding: 0.5rem 0.85rem;
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--accent-bright), var(--accent));
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.desktop-onboarding-invite:hover {
+  filter: brightness(1.05);
+}
+
+.desktop-onboarding-invite:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.win-onboarding {
+  left: 50%;
+  top: 46%;
+  transform: translate(-50%, -50%);
+  width: clamp(296px, 52vw, 500px);
+  min-height: 260px;
+  max-height: min(432px, 72vh);
+  z-index: 42;
+}
+
+.onboarding-wizard-root {
+  min-height: 0;
+}
+
+.onboarding-wizard {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 0;
+}
+
+.onboarding-wizard-progress {
+  display: flex;
+  gap: 0.35rem;
+  justify-content: center;
+  margin-bottom: 0.2rem;
+}
+
+.onboarding-wizard-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: var(--surface-line);
+}
+
+.onboarding-wizard-dot--active {
+  background: var(--accent);
+  box-shadow: 0 0 0 4px rgba(234, 104, 43, 0.2);
+}
+
+.onboarding-wizard-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+}
+
+.onboarding-wizard-body {
+  margin: 0;
+  font-size: 0.8rem;
+  line-height: 1.52;
+  color: var(--text-body);
+}
+
+.onboarding-wizard-body strong {
+  color: var(--accent-bright);
+  font-weight: 600;
+}
+
+.onboarding-wizard-nav {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.55rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--surface-line);
+}
+
+.onboarding-wizard-btn {
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.45rem 0.95rem;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid var(--surface-line);
+}
+
+.onboarding-wizard-btn--secondary {
+  color: var(--text-muted);
+  background: var(--surface-mid);
+}
+
+.onboarding-wizard-btn--secondary:hover:not(:disabled) {
+  color: var(--text-primary);
+  border-color: var(--accent);
+}
+
+.onboarding-wizard-btn--secondary:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.onboarding-wizard-btn--primary {
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--accent-bright), var(--accent));
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+.onboarding-wizard-btn--primary:hover {
+  filter: brightness(1.06);
+}
+
 /* ---- Phase 8 — desktop chrome (top links) ---- */
 
 .desktop-chrome {
@@ -153,16 +467,6 @@ body {
   letter-spacing: 0.02em;
 }
 
-.desktop-chrome-badge {
-  font-size: 0.61rem;
-  font-weight: 600;
-  padding: 0.12rem 0.42rem;
-  border-radius: 999px;
-  border: 1px solid var(--surface-line);
-  color: var(--text-muted);
-  text-transform: uppercase;
-}
-
 .desktop-chrome-links {
   display: flex;
   flex-wrap: wrap;
@@ -199,19 +503,81 @@ body {
 .desktop-window__head {
   flex-shrink: 0;
   display: flex;
-  align-items: center;
-  padding: 0.45rem 0.65rem;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.38rem 0.45rem 0.38rem 0.65rem;
   background: linear-gradient(180deg, var(--surface-mid) 0%, #1e1b18 100%);
   border-bottom: 1px solid var(--surface-line);
   user-select: none;
 }
 
+.desktop-window__drag-handle {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+}
+
+.desktop-window__controls {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.28rem;
+}
+
+.desktop-window__btn {
+  display: inline-grid;
+  place-items: center;
+  margin: 0;
+  width: 1.55rem;
+  height: 1.45rem;
+  padding: 0;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.desktop-window__btn--minimize {
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.desktop-window__btn--minimize:hover {
+  color: var(--text-primary);
+  background: rgba(255, 180, 80, 0.14);
+  border-color: rgba(255, 162, 74, 0.25);
+}
+
+.desktop-window__btn--close {
+  color: #fca5a5;
+  background: rgba(220, 53, 69, 0.12);
+}
+
+.desktop-window__btn--close:hover {
+  color: #fff;
+  background: rgba(220, 53, 69, 0.45);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.desktop-window__btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
 .desktop-window__title {
   font-size: 0.78rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .desktop-window__body {
@@ -1052,18 +1418,4 @@ body {
   font-size: 0.66rem;
   line-height: 1.35;
   color: var(--text-dim);
-}
-
-.sim-disclaimer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  margin: 0;
-  padding: 0.5rem 1rem;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  background: rgba(22, 18, 14, 0.93);
-  border-top: 1px solid var(--surface-mid);
-  text-align: center;
 }

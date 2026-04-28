@@ -318,7 +318,7 @@ Commit / push.
 
 ---
 
-# Phase 2.5 — BackOS Desktop Metaphor (transition)
+# Phase 2.5 — BazingaOS Desktop Metaphor (transition)
 
 Evolve the Phase 2 shell forward: same window manager and apps—clearer **desktop OS** metaphor and spatial onboarding. **Transition/incremental**, not a rollback or parallel redesign.
 
@@ -326,8 +326,9 @@ Evolve the Phase 2 shell forward: same window manager and apps—clearer **deskt
 
 Build:
 
-- [x] **BackOS** identity (name + visuals consistent with existing boot/desktop styling)
-- [ ] **Icons-first desktop**: apps appear as icons; **opening a window is explicit** (click/double-click)—initial desktop is calm, not a pile of open windows
+- [x] **BazingaOS** identity (name + visuals consistent with existing boot/desktop styling)
+- [x] **Icons-first desktop**: apps appear as icons; **opening a window is explicit** (click)—initial desktop is calm, not a pile of open windows (`desktop-icons-surface` — draggable icons; windows `desktop-window--closed` until opened)
+- [x] First-run **onboarding** wizard (single window, multi-step **Next**/**Finish**); completion stored in **localStorage** (`bazingaos.onboarding.completed`); no repeat; **boot splash skipped** on return visits once complete
 - [ ] Trash on the desktop (affordance + behavior—empty vs items, optional restore)
 
 ## Files / previews / Easter eggs
