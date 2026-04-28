@@ -351,19 +351,19 @@ Commit / push.
 # Phase 3 — Command Palette
 
 Build:
-- [ ] Cmd/Ctrl-K
-- [ ] search commands
-- [ ] launch actions
-- [ ] Escape closes
+- [x] Cmd/Ctrl-K
+- [x] search commands
+- [x] launch actions
+- [x] Escape closes
 
 Commands:
-- [ ] open lifecycle
-- [ ] open invariants
-- [ ] open explorer
-- [ ] open failure modes
-- [ ] open memo
+- [x] open lifecycle
+- [x] open invariants
+- [x] open explorer
+- [x] open failure modes
+- [x] open memo
 
-Verify:
+Verify (**please confirm**):
 - [ ] keyboard shortcut works
 - [ ] commands launch correctly
 

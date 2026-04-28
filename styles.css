@@ -187,6 +187,171 @@ body {
   z-index: 30;
 }
 
+/* ---- Phase 3 — command palette & memo stub ---- */
+
+.palette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  pointer-events: none;
+}
+
+.palette-overlay:not([hidden]) {
+  pointer-events: auto;
+}
+
+.palette-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(1, 4, 9, 0.62);
+}
+
+.palette-panel {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 12vh auto 0;
+  padding: 0;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.55);
+  overflow: hidden;
+}
+
+.palette-input {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #e6edf3;
+  background: #0d1117;
+  border: none;
+  border-bottom: 1px solid #21262d;
+  outline: none;
+}
+
+.palette-input::placeholder {
+  color: #6e7681;
+}
+
+.palette-results {
+  margin: 0;
+  padding: 0.35rem 0;
+  list-style: none;
+  max-height: min(50vh, 320px);
+  overflow: auto;
+}
+
+.palette-result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.35rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  color: #e6edf3;
+}
+
+.palette-result:hover,
+.palette-result--active {
+  background: #21262d;
+}
+
+.palette-result-label {
+  font-weight: 500;
+}
+
+.palette-result-hint {
+  font-size: 0.78rem;
+  color: #8b949e;
+}
+
+.palette-hint-bar {
+  padding: 0.45rem 1rem;
+  font-size: 0.72rem;
+  color: #6e7681;
+  border-top: 1px solid #21262d;
+}
+
+.palette-hint-bar kbd {
+  display: inline-block;
+  margin: 0 0.1rem;
+  padding: 0.1rem 0.35rem;
+  font-family: inherit;
+  font-size: inherit;
+  color: #8b949e;
+  background: #21262d;
+  border-radius: 4px;
+  border: 1px solid #30363d;
+}
+
+.memo-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 410;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  pointer-events: none;
+}
+
+.memo-overlay:not([hidden]) {
+  pointer-events: auto;
+}
+
+.memo-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+}
+
+.memo-panel {
+  position: relative;
+  z-index: 1;
+  max-width: 420px;
+  padding: 1.25rem 1.5rem;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.memo-title {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #58a6ff;
+}
+
+.memo-body {
+  margin: 0 0 1rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: #c9d1d9;
+}
+
+.memo-close {
+  font-family: inherit;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.85rem;
+  cursor: pointer;
+  color: #e6edf3;
+  background: #21262d;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+}
+
+.memo-close:hover {
+  background: #30363d;
+}
+
 .sim-disclaimer {
   position: fixed;
   bottom: 0;

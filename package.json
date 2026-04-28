@@ -6,7 +6,7 @@
   "packageManager": "pnpm@10.12.1",
   "description": "Simulated internal control plane — trust invariants for programmable assets (Circle-facing artifact)",
   "scripts": {
-    "check": "node --check app.js && node --check js/desktop-shell.js && node --test",
+    "check": "node --check app.js && node --check js/desktop-shell.js && node --check js/command-palette.js && node --test",
     "test": "node --test",
     "dev": "serve . -l 8080"
   },

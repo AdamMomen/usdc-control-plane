@@ -1,5 +1,7 @@
 /** Phase 2 — boot overlay + draggable desktop windows. Loaded only in browser. */
 
+import { attachCommandPalette } from "./command-palette.js";
+
 const BOOT_LINES = [
   "Loading USDC Control Plane...",
   "Verifying trust invariants...",
@@ -56,7 +58,18 @@ export function mount(rootSelector) {
 
   runBootOverlay(root, () => {
     root.replaceChildren();
-    root.appendChild(buildDesktop());
+    const { shell, byId } = buildDesktop();
+    root.appendChild(shell);
+    attachCommandPalette(root, {
+      focusWindow(id) {
+        const el = byId.get(id);
+        if (!el) {
+          return;
+        }
+        bringToFront(el);
+        el.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      },
+    });
   });
 }
 
@@ -134,11 +147,16 @@ function buildDesktop() {
   const shell = document.createElement("div");
   shell.className = "desktop-shell";
 
+  /** @type {Map<string, HTMLElement>} */
+  const byId = new Map();
+
   WINDOWS.forEach((def) => {
-    shell.appendChild(createWindow(def));
+    const w = createWindow(def);
+    byId.set(def.id, w);
+    shell.appendChild(w);
   });
 
-  return shell;
+  return { shell, byId };
 }
 
 function createWindow(def) {
