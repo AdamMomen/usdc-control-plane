@@ -3,6 +3,7 @@
  */
 
 const KNOWN_COMMANDS = new Set([
+  "help",
   "inspect-finality",
   "verify-invariant",
   "trace-transfer",
@@ -26,7 +27,8 @@ export function parseCommand(line) {
     return {
       ok: false,
       error: `unknown command: ${command}`,
-      hint: "try: inspect-finality | why-circle | verify-invariant | trace-transfer | simulate-reorg",
+      hint:
+        "try: help · inspect-finality · verify-invariant · trace-transfer · simulate-reorg · why-circle",
     };
   }
   return { ok: true, command, args };

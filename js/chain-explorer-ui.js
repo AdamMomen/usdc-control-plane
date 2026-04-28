@@ -50,7 +50,7 @@ export function mountChainExplorer(container) {
   }
 
   println(
-    "type a command · e.g. inspect-finality tx_4412 · why-circle · Enter to submit",
+    "type help for commands · e.g. inspect-finality tx_4412 · why-circle · Enter",
     "chain-explorer-line--meta",
   );
 

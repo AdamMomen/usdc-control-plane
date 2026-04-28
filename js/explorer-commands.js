@@ -16,8 +16,61 @@ function arg0(args, fallback) {
  * @param {string[]} args
  * @returns {string[]}
  */
+const TOPIC_HELP = /** @type {Record<string, string[]>} */ ({
+  help: ["help — list commands · help <name> describes one"],
+  "inspect-finality": [
+    "inspect-finality [tx_id]",
+    "  Simulated finality horizon / depth markers for a settlement target.",
+  ],
+  "verify-invariant": [
+    "verify-invariant [pool_id]",
+    "  Simulated rollup of supply / replay / settlement head checks.",
+  ],
+  "trace-transfer": [
+    "trace-transfer [batch_id]",
+    "  Simulated path proof across policy engine and mirrored ledger staging.",
+  ],
+  "simulate-reorg": ["simulate-reorg", "  Injects a controlled equivocation; shows recovery narration (fixture)."],
+  "why-circle": ["why-circle", "  Succinct reviewer positioning — ties to programmable assets / settlement."],
+});
+
+function linesForHelpTopic(name) {
+  const lines = TOPIC_HELP[name];
+  if (lines) {
+    return [...lines];
+  }
+  return [`unknown topic: ${name}`, "type: help"];
+}
+
+function linesForHelpListing() {
+  return [
+    "chain state explorer — simulation commands:",
+    "",
+    "  help [topic]               list commands or describe one",
+    "  inspect-finality [tx_id]    finality / depth snapshot (fixture)",
+    "  verify-invariant [pool_id]  invariant rollup for a liquidity pool tag",
+    "  trace-transfer [batch_id] end-to-end transfer trace",
+    "  simulate-reorg              reorg containment + recovery (fixture)",
+    "  why-circle                  Circle-fit narrative hook",
+    "",
+    "synopsis: run: help inspect-finality · help simulate-reorg …",
+  ];
+}
+
+/**
+ * @param {string} command
+ * @param {string[]} args
+ * @returns {string[]}
+ */
 export function explorerSimulatedLines(command, args) {
   switch (command) {
+    case "help": {
+      const topic = /** @type {string | undefined} */ (args[0]);
+      if (topic) {
+        return linesForHelpTopic(topic.trim().toLowerCase());
+      }
+      return linesForHelpListing();
+    }
     case "inspect-finality": {
       const tx = arg0(args, "tx_4412");
       return [

@@ -24,6 +24,25 @@ test("why-circle returns positioning copy", () => {
   assert.ok(r.lines.join(" ").includes("intent"));
 });
 
+test("help lists commands", () => {
+  const r = explorerRun("help");
+  assert.equal(r.ok, true);
+  assert.ok(r.lines.join("\n").includes("inspect-finality"));
+  assert.ok(r.lines.join("\n").includes("simulate-reorg"));
+});
+
+test("help with topic expands", () => {
+  const r = explorerRun("help inspect-finality");
+  assert.equal(r.ok, true);
+  assert.ok(r.lines.some((l) => /finality/i.test(l)));
+});
+
+test("help unknown topic", () => {
+  const r = explorerRun("help not-a-real-cmd-topic");
+  assert.equal(r.ok, true);
+  assert.ok(r.lines.join(" ").includes("unknown topic"));
+});
+
 test("simulate-reorg returns containment language", () => {
   const r = explorerRun("simulate-reorg");
   assert.equal(r.ok, true);

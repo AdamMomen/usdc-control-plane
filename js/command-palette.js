@@ -21,7 +21,7 @@ export const PALETTE_ENTRIES = [
   {
     id: "open-explorer",
     label: "Open Chain State Explorer",
-    hint: "Terminal / commands",
+    hint: "Terminal — type help",
     windowId: "explorer",
   },
   {

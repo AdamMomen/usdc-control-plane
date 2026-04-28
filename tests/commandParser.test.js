@@ -2,6 +2,19 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { parseCommand } from "../app.js";
 
+test("help is recognized", () => {
+  const r = parseCommand("help");
+  assert.equal(r.ok, true);
+  assert.equal(r.command, "help");
+  assert.deepEqual(r.args, []);
+});
+
+test("help with topic parses args", () => {
+  const r = parseCommand("help simulate-reorg");
+  assert.equal(r.ok, true);
+  assert.deepEqual(r.args, ["simulate-reorg"]);
+});
+
 test("why-circle is recognized", () => {
   const r = parseCommand("why-circle");
   assert.equal(r.ok, true);
